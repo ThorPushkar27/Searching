@@ -1,5 +1,6 @@
 // Binary Search solution.
-
+//Time Complexity = O(nlog(sum[arr]
+-max(element of array).
 
 class Solution {
 public:
