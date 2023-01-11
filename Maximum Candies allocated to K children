@@ -1,0 +1,39 @@
+// Pura qquestion khud se solve kiya hai.
+//binary search
+// Time Complexity O(nlog(max_ele - 1)
+
+class Solution {
+public:
+    long long child(vector<int>&candies, int number ){
+        long long child_number=0;
+        int n = candies.size();
+        for(int i =0; i<n; i++){
+            child_number+= (candies[i]/number);
+        }
+        return child_number;
+    }
+    int maximumCandies(vector<int>& candies, long long k) {
+        int n = candies.size();
+        int ans;
+        long long  sum=0;
+        for(int i =0; i<n; i++){
+            sum+= candies[i];
+        }
+        if(sum<k) return 0;
+        int e=*max_element(candies.begin(),candies.end());
+        int s= 1;
+        while(s<=e){
+            int mid= s+(e-s)/2;
+            long long a= child(candies,mid);
+            if(a>=k){
+                ans=mid;
+                s=mid+1;
+            }
+            else{
+                e=mid-1;
+            }
+        }
+        return ans;
+        
+    }
+};
