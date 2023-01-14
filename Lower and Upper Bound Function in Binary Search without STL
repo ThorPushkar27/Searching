@@ -1,0 +1,67 @@
+// Time Complexity of the function is O(log(n))
+// n is the size of the array .
+
+#include<bits/stdc++.h>
+using namespace std;
+int lower_bound(vector<int>&v,int element){
+    int n = v.size();
+    int l=0; 
+    int h=n-1;
+    while(h-l>1){
+        int mid = l + (h-l)/2;
+        if(v[mid]<element){
+            l=mid+1;
+        }
+        else{
+            h=mid;
+        }
+    }
+    if(v[l]>=element){
+        return l;
+    }
+    if(v[h]>=element){
+        return h;
+    }
+    return -1;
+}
+
+
+int upper_bound(vector<int>&v,int element){
+    int n = v.size();
+    int l=0; 
+    int h=n-1;
+    while(h-l>1){
+        int mid = l + (h-l)/2;
+        if(v[mid]<=element){
+            l=mid+1;
+        }
+        else{
+            h=mid;
+        }
+    }
+    if(v[l]>element){
+        return l;
+    }
+    if(v[h]>element){
+        return h;
+    }
+    return -1;
+}
+
+
+int main(){
+    int element;
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0; i<n; i++){
+        cin>>v[i];
+    }
+    //int element;
+    cin>>element;
+    int low=lower_bound(v,element);
+    int high = upper_bound(v,element);
+    cout<<low<<" "<<high<<endl;
+
+    return 0;
+}
