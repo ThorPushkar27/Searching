@@ -1,0 +1,23 @@
+// Khud se soocha aaproach
+// stl lower and upper bound use kiya
+// O(logn) approach.
+
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int>ans;
+        int n = nums.size();
+        auto a= lower_bound(nums.begin(),nums.end(),target);
+        auto b= upper_bound(nums.begin(),nums.end(),target);
+        
+
+        if(a==nums.end()|| (*a)!=target){
+            return {-1,-1};
+        }
+        
+        int c= a-nums.begin();
+        int d= b-nums.begin();
+        return{c,d-1};
+        
+    }
+};
